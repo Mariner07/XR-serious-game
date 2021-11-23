@@ -14,13 +14,19 @@ public class GameScripts : MonoBehaviour
     public Slider LengthSlider;
     public Slider WidthSlider;
     public Slider HeightSlider;
+
+    //checking if volumes are equal
     public void ButtonClick ()
     {
+        //reading values from Input fields
         float h = float.Parse(Height.text);
         float w = float.Parse(Width.text);
         float l = float.Parse(Length.text);
+
+        //checking the volume for the input values
         V = h*w*l;
-        Debug.Log(V);
+        
+        //comparing the volume with the required one and generating the messages
         Cube.transform.localScale = new Vector3(w, h, l);
         if (V == 36)
             {
@@ -44,28 +50,34 @@ public class GameScripts : MonoBehaviour
 
         
     }
-
+    //getting the infornation from Slider for the Length (in our case z axis)
     public void SliderLenght_Changed(float newValue)
     {
         Vector3 dim_l = Cube.transform.localScale;
         dim_l.z = LengthSlider.value;
         Cube.transform.localScale = dim_l;
+
+        //showing the Slider Length value in Input Field for the Length
         Length.text = dim_l.z.ToString(); 
     }
 
+    //getting the infornation from Slider for the Wdth (in our case x axis)
     public void SliderWidth_Changed(float newValue)
     {
         Vector3 dim_l = Cube.transform.localScale;
         dim_l.x = WidthSlider.value;
         Cube.transform.localScale = dim_l;
+        //showing the Slider Width value in Input Field for the Width
         Width.text = dim_l.x.ToString();
     }
 
+    //getting the infornation from Slider for the Height (in our case y axis)
     public void SliderHeight_Changed(float newValue)
     {
         Vector3 dim_l = Cube.transform.localScale;
         dim_l.y = HeightSlider.value;
         Cube.transform.localScale = dim_l;
+        //showing the Slider Height value in Input Field for the Height
         Height.text = dim_l.y.ToString();
     }
 
