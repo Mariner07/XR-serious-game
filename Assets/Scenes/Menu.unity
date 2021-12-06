@@ -406,7 +406,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 618055976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b47e2df0fe2d49fb9286b2a794bf6e0, type: 3}
+  m_Script: {fileID: 11500000, guid: f722dd3d99f2141aaa6e0ea24964d712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &618055979
@@ -454,7 +454,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 618055978}
-        m_TargetAssemblyTypeName: Button_ToGame, Assembly-CSharp
+        m_TargetAssemblyTypeName: Button_ToInstruction, Assembly-CSharp
         m_MethodName: OnStart
         m_Mode: 1
         m_Arguments:
