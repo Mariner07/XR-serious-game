@@ -20,6 +20,12 @@ public class GameScripts : MonoBehaviour
 
     Rect rect = new Rect(0, 0, 200, 70);
     Vector3 offset = new Vector3(0f, 0f, 0.5f); // height above the target position
+    //System.Random  rd = new System.Random();
+    // int rand_num = rd.Next(100, 200);
+    //public string ghLabel = rd.Next(6, 36).ToString();
+    int ghLabel = uniqueRandomNumbers(6, 36);
+
+   
 
     void OnGUI()
     {
@@ -28,7 +34,7 @@ public class GameScripts : MonoBehaviour
         Vector3 point = Camera.main.WorldToScreenPoint(Ghost.transform.position + offset);
         rect.x = point.x-20;
         rect.y = Screen.height - point.y - rect.height; // bottom left corner set to the 3D point
-        GUI.Label(rect,"36"); // display its name, or other string
+        GUI.Label(rect, ghLabel.ToString()); // display its name, or other string
 
     }
 
@@ -45,7 +51,7 @@ public class GameScripts : MonoBehaviour
         
         //comparing the volume with the required one and generating the messages
         Cube.transform.localScale = new Vector3(w, h, l);
-        if (V == 36)
+        if (V == ghLabel)
             {
             Evaluation.text = "V="+V.ToString() + " Right!";
             Evaluation.color = Color.green;
@@ -54,17 +60,23 @@ public class GameScripts : MonoBehaviour
             Ghost.transform.localScale = new Vector3(40*w, 40*l, 40*h);
             Ghost.transform.position = Cube.transform.position;
         }
-        else if (V < 36)
+        else if (V < ghLabel)
         {
             Evaluation.text = "V=" + V.ToString() + " Too small!";
             Evaluation.color = Color.red;
             Evaluation.fontSize = 20;
+            Ghost.transform.rotation = Quaternion.Euler(270, 0, 0);
+            Ghost.transform.position = new Vector3(-1 * Mathf.Max(l, w)-2, 0, 0);
+            Ghost.transform.localScale = new Vector3(150, 150, 150);
         }
         else
         {
             Evaluation.text = "V=" + V.ToString() + " Too big!";
             Evaluation.color = Color.red;
             Evaluation.fontSize = 20;
+            Ghost.transform.rotation = Quaternion.Euler(270, 0, 0);
+            Ghost.transform.position = new Vector3(-1 * Mathf.Max(l,w)-2, 0, 0);
+            Ghost.transform.localScale = new Vector3(150, 150, 150);
         }
 
 
@@ -99,6 +111,30 @@ public class GameScripts : MonoBehaviour
         Cube.transform.localScale = dim_l;
         //showing the Slider Height value in Input Field for the Height
         Height.text = dim_l.y.ToString();
+    }
+
+    public void ChangeWValue()
+    {
+        if (WidthSlider.value != float.Parse(Width.text)) WidthSlider.value = float.Parse(Width.text);
+    }
+
+    public void ChangeLValue()
+    {
+        if (LengthSlider.value != float.Parse(Length.text)) LengthSlider.value = float.Parse(Length.text);
+    }
+
+    public void ChangeHValue()
+    {
+        if (HeightSlider.value != float.Parse(Height.text)) HeightSlider.value = float.Parse(Height.text);
+    }
+
+    private static int uniqueRandomNumbers(int min, int max)
+    {
+        // actual generation of random numbers
+       System.Random randNum = new System.Random();
+
+        // generate a candidate
+       return randNum.Next(min, max);
     }
 
 
