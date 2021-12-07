@@ -10,13 +10,30 @@ public class GameScripts : MonoBehaviour
     public InputField Length;
     public float V;
     public GameObject Cube;
+    public GameObject Ghost;
     public Text Evaluation;
     public Slider LengthSlider;
     public Slider WidthSlider;
     public Slider HeightSlider;
 
-    //checking if volumes are equal
-    public void ButtonClick ()
+
+
+    Rect rect = new Rect(0, 0, 200, 70);
+    Vector3 offset = new Vector3(0f, 0f, 0.5f); // height above the target position
+
+    void OnGUI()
+    {
+        GUI.contentColor = Color.blue;
+        GUI.skin.label.fontSize = 30;
+        Vector3 point = Camera.main.WorldToScreenPoint(Ghost.transform.position + offset);
+        rect.x = point.x-20;
+        rect.y = Screen.height - point.y - rect.height; // bottom left corner set to the 3D point
+        GUI.Label(rect,"36"); // display its name, or other string
+
+    }
+
+        //checking if volumes are equal
+        public void ButtonClick ()
     {
         //reading values from Input fields
         float h = float.Parse(Height.text);
@@ -33,7 +50,10 @@ public class GameScripts : MonoBehaviour
             Evaluation.text = "V="+V.ToString() + " Right!";
             Evaluation.color = Color.green;
             Evaluation.fontSize = 20;
-             }
+            Ghost.transform.rotation = Quaternion.Euler(270,18,0);
+            Ghost.transform.localScale = new Vector3(40*w, 40*l, 40*h);
+            Ghost.transform.position = Cube.transform.position;
+        }
         else if (V < 36)
         {
             Evaluation.text = "V=" + V.ToString() + " Too small!";
