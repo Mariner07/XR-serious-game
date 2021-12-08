@@ -18,6 +18,13 @@ public class GameScripts : MonoBehaviour
     public Slider WidthSlider;
     public Slider HeightSlider;
 
+    /*
+    private void Update()
+    {
+        //Find objects having a specific tag
+        GameObject[] Ghost = GameObject.FindGameObjectsWithTag("ghost");
+    }
+    */
 
     Rect rect = new Rect(0, 0, 200, 70);
     Vector3 offset = new Vector3(0f, 0f, 0.5f); // height above the target position
