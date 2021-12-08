@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
-  m_Name: 2D marker
+  m_Name: marker_detection
   m_EditorClassIdentifier: 
-  m_GuidLow: 4847106077725047704
-  m_GuidHigh: 1601911645250935455
+  m_GuidLow: 5580721340396256998
+  m_GuidHigh: 11068911411483098303
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5476764891572032370
-      m_GuidHigh: 14193402460158348433
+      m_GuidLow: 4880580196290032304
+      m_GuidHigh: 3195196050212108426
     m_SerializedTextureGuid:
       m_GuidLow: 12990678756076085211
       m_GuidHigh: 14796553816753253978
