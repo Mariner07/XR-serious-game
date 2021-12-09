@@ -17,7 +17,23 @@ public class GameScripts : MonoBehaviour
     public Slider HeightSlider;
 
 
+    /*private Vector3 startPos;
 
+    public float speed = 1;// (float)0.01;
+    public float xScale = 1;// (float)0.01;
+    public float zScale = 1;// (float)0.01;
+
+    void Start()
+    {
+        startPos = Ghost.transform.position;
+    }
+
+    void Update()
+    {
+        Ghost.transform.position = startPos + (Vector3.right * Mathf.Sin(Time.timeSinceLevelLoad / 2 * speed) * xScale - Vector3.up * Mathf.Sin(Time.timeSinceLevelLoad * speed) * zScale);
+    }
+
+    */
     Rect rect = new Rect(0, 0, 200, 70);
     //Vector3 offset = new Vector3(-0.2f, 0f, 0.3f); // height above the target position
     //System.Random  rd = new System.Random();
@@ -56,7 +72,8 @@ public class GameScripts : MonoBehaviour
             {
             Evaluation.text = "V="+V.ToString() + " Right!";
             Evaluation.color = Color.green;
-            Evaluation.fontSize = 20;
+            Evaluation.fontSize = 50;
+            Ghost.GetComponent<Animator>().enabled = false;
             Ghost.transform.rotation = Quaternion.Euler(270,18,0);
             Ghost.transform.localScale = new Vector3((float)2.2 * w, (float)2.2* l, (float)2.2 * h);
             Ghost.transform.position = Cube.transform.position;
@@ -65,7 +82,7 @@ public class GameScripts : MonoBehaviour
         {
             Evaluation.text = "V=" + V.ToString() + " Too small!";
             Evaluation.color = Color.red;
-            Evaluation.fontSize = 20;
+            Evaluation.fontSize = 50;
             Ghost.transform.rotation = Quaternion.Euler(-90, 0, -742);
             Ghost.transform.position = new Vector3((float)-0.2-(Mathf.Max(l, w)/20), 0, (float) 0.3);
             Ghost.transform.localScale = new Vector3(5, 5, 5);
@@ -74,7 +91,7 @@ public class GameScripts : MonoBehaviour
         {
             Evaluation.text = "V=" + V.ToString() + " Too big!";
             Evaluation.color = Color.red;
-            Evaluation.fontSize = 20;
+            Evaluation.fontSize = 50;
             Ghost.transform.rotation = Quaternion.Euler(-90, 0, -742);
             //Ghost.transform.position = new Vector3(-1 * Mathf.Max(l,w)-2, 0, 0);
             Ghost.transform.position = new Vector3((float)-0.2 - (Mathf.Max(l, w)/20), 0, (float)0.3);
