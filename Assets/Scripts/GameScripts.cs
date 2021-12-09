@@ -18,6 +18,13 @@ public class GameScripts : MonoBehaviour
     public Text MathProblem;
 
 
+    /*
+    private void Update()
+    {
+        //Find objects having a specific tag
+        GameObject[] Ghost = GameObject.FindGameObjectsWithTag("ghost");
+    }
+    */
 
     Rect rect = new Rect(0, 0, 200, 70);
     //Vector3 offset = new Vector3(-0.2f, 0f, 0.3f); // height above the target position
